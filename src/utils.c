@@ -13,23 +13,31 @@
 /*   By: aperez-b <100429952@alumnos.uc3m.es>                                 */
 /*                                                                            */
 /*   Created: 2022/04/23 12:57:23 by aperez-b                                 */
-/*   Updated: 2022/04/24 12:09:09 by aperez-b                                 */
+/*   Updated: 2022/04/24 13:03:23 by aperez-b                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cp_abe.h"
+
+useconds_t	get_time(void)
+{
+	struct timeval	t;
+
+	gettimeofday(&t, NULL);
+	return (t.tv_sec * 1000 + t.tv_usec / 1000);
+}
 
 void	encrypt_pdf(int n_attrs)
 {
 	char	*cmd;
 	int		i;
 
-	i = -1;
+	i = 0;
 	cmd = ft_strdup("echo \"");
-	while (++i < n_attrs)
+	while (i++ < n_attrs)
 	{
 		cmd = wrap_cmd(NULL, cmd, get_str("attr_", i));
-		if (i + 1 < n_attrs)
+		if (i + 1 <= n_attrs)
 			cmd = wrap_cmd(NULL, cmd, ft_strdup(" and "));
 	}
 	cmd = wrap_cmd(NULL, cmd, \
