@@ -6,7 +6,7 @@
 #    By: aperez-b <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 09:03:14 by aperez-b          #+#    #+#              #
-#    Updated: 2022/04/24 12:29:34 by aperez-b         ###   ########.fr        #
+#    Updated: 2022/04/25 12:05:01 by aperez-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,13 @@ BIN_DIR = bin
 BIN = cp_abe
 NAME = $(BIN_DIR)/$(BIN)
 PRINTF = LC_NUMERIC="en_US.UTF-8" printf
-LIBFT = libft.a
 
-
-SRC = main.c utils.c
+SRC = main.c utils.c ft_strdup.c	\
+	ft_substr.c ft_strlcpy.c		\
+	ft_atoi.c ft_itoa.c ft_nbrlen.c	\
+	ft_putstr_fd.c ft_isspace.c		\
+	ft_strjoin.c ft_putnbr_fd.c		\
+	ft_putchar_fd.c ft_strlen.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
@@ -55,7 +58,7 @@ SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 all: $(NAME)
 
 $(NAME): create_dirs $(OBJ)
-	@$(CC) $(CFLAGS) $(CDEBUG) $(OBJ) $(LIBFT) -o $@
+	@$(CC) $(CFLAGS) $(CDEBUG) $(OBJ) -o $@
 	@$(PRINTF) "\r%100s\r$(GREEN)$(BIN) is up to date!$(DEFAULT)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

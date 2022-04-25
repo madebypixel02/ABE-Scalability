@@ -13,7 +13,7 @@
 <!-- By: aperez-b <100429952@alumnos.uc3m.es>                                -->
 <!--                                                                         -->
 <!-- Created: 2022/04/25 07:29:22 by aperez-b                                -->
-<!-- Updated: 2022/04/25 11:02:05 by aperez-b                                -->
+<!-- Updated: 2022/04/25 12:15:21 by aperez-b                                -->
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
@@ -61,9 +61,16 @@ Here is a quick overview of the functions I created:
 | ``decrypt_pdf`` | Decrypts pdf for a given user and saves it to the user's folder |
 | ``ft_putstr_fd`` | Writes a custom string to a file descriptor with ``write`` |
 | ``ft_atoi`` | Converts ascii to int. Reads a string and obtains the equivalent integer value |
+| ``ft_itoa`` | Converts int to ascii. Reads an int and obtains the equivalent string value |
 | ``ft_strdup`` | Returns allocated copy of a string |
 | ``ft_strjoin`` | Joins two strings together in an allocated string |
 | ``ft_substr`` | Returns allocated substring (copies n bytes from ``start`` of the given string) |
+| ``ft_strlen`` | Returns length of a string |
+| ``ft_nbrlen`` | Returns length of a number |
+| ``ft_strlcat`` | Copies ``n - 1`` bytes of a string into another one |
+| ``ft_issplace`` | Returns ``1`` if char is a form of space (same as ``isspace``) |
+| ``ft_putchar_fd`` | Writes a char to a file descriptor |
+| ``ft_putnbr_fd`` | Writes int to a file descriptor |
 
 Here are the builtin functions I used and a quick description of what they do. Check their manpages for more information
 
