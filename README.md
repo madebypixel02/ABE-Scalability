@@ -179,6 +179,8 @@ tar zxvf cpabe-0.11.tar.gz; cd cpabe-0.11
 ./configure --with-pbc-include=/usr/local/include/pbc --with-pbc-lib=/usr/local/lib
 sed -e '67 s/\$1/\$1;/' policy_lang.y > temp
 mv temp policy_lang.y
+sed -e '89 s/help2man/help2man --no-discard-stderr/' Makefile > temp
+mv temp Makefile
 make LDFLAGS="-lgmp -lpbc -lcrypto -L/usr/lib/x86_64-linux-gnu -lglib-2.0 -lbswabe -lgmp"
 sudo make LDFLAGS="-lgmp -lpbc -lcrypto -L/usr/lib/x86_64-linux-gnu -lglib-2.0 -lbswabe -lgmp" install
 cd ..
