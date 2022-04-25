@@ -17,9 +17,9 @@
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
-# ABE-Scalability | Uc3m
+# ABE-Scalability | uc3m
 
-*[Uc3m] Cybersecurity practice to measure the scalability and complexity of Attribute-Based Encryption 🔧*
+*Cybersecurity practice to measure the scalability and complexity of Attribute-Based Encryption 🔧*
 
 By Alejandro Pérez Bueno (100429952@alumnos.uc3m.es)
 
