@@ -19,7 +19,7 @@
 
 # ABE-Scalability | Uc3m
 
-[Uc3m] Cybersecurity practice to measure the scalability and complexity of Attribute-Based Encryption
+*[Uc3m] Cybersecurity practice to measure the scalability and complexity of Attribute-Based Encryption 🔧*
 
 By Alejandro Pérez Bueno (100429952@alumnos.uc3m.es)
 
@@ -35,11 +35,11 @@ By Alejandro Pérez Bueno (100429952@alumnos.uc3m.es)
 
 ## Introduction
 
-The goal for this project is to get familiar with the ``cpabe`` tools for attribute-based encryption. We are asked to code an algorithm that creates various users and their secret keys made from a set of attributes, and later encrypt and decrypt a 5MB pdf file several times. In this practice we will try different combinations of the number of users, attributes and repetitions. The idea is to measure how long it takes to encrypt and decrypt the pdf file depending on these values
+The goal for this project is to get familiar with the ``cpabe`` tools for attribute-based encryption. We are asked to code an algorithm that creates various users and their secret keys made from a set of attributes, and later encrypts and decrypts a 5MB pdf file several times. In this practice we will try different combinations of the number of users, attributes and repetitions. The idea is to measure how long it takes to encrypt and decrypt the pdf file depending on these values.
 
 ## Code Implementation
 
-I implemented the algorithm for encryption in ``C``, since it is what I'm most comfortable coding in. The project includes a ``Makefile`` with the necessary compliation rules. It will create the executable file ``cp_abe`` inside a ``./bin`` folder. This program always takes three arguments:
+I implemented the algorithm for encryption in ``C``, since it is what I'm most comfortable coding in. The project includes a ``Makefile`` with the necessary compliation rules. It will create the executable file ``cp_abe`` inside a ``bin/`` folder. This program always takes three arguments:
 
 
 ```
@@ -51,7 +51,7 @@ Here is a quick overview of the functions I created:
 | Function | Description |
 | :------: | :---------: |
 | ``parse_args`` | Reads arguments from ``argv`` and saves number of users, attributes and repetitions |
-| ``create_dirs`` | Creates ``tests`` folder where all users' folders will be, and runs ``cpabe-setup`` in ``tests/master`` |
+| ``create_dirs`` | Creates ``tests/`` folder where all users' folders will be, and runs ``cpabe-setup`` in ``tests/master/`` |
 | ``config_dirs`` | Creates folder for every user and creates attributes for all of them |
 | ``get_time`` | Returns current ``epoch`` time (seconds since 1970) |
 | ``get_str`` | Adds given index to provided string (eg ``"user_1"``, ``"attr_3"``, ``"file_n"``) |
@@ -59,6 +59,11 @@ Here is a quick overview of the functions I created:
 | ``crypt_pdf`` | For every ``n_repeat``, encrypts the pdf and then every user decrypts it |
 | ``encrypt_pdf`` | Encrypts pdf file ``file.pdf`` with all attributes as ``file-enc.pdf.cpabe`` |
 | ``decrypt_pdf`` | Decrypts pdf for a given user and saves it to the user's folder |
+| ``ft_putstr_fd`` | Writes a custom string to a file descriptor with ``write`` |
+| ``ft_atoi`` | Converts ascii to int. Reads a string and obtains the equivalent integer value |
+| ``ft_strdup`` | Returns allocated copy of a string |
+| ``ft_strjoin`` | Joins two strings together in an allocated string |
+| ``ft_substr`` | Returns allocated substring (copies n bytes from ``start`` of the given string) |
 
 Here are the builtin functions I used and a quick description of what they do. Check their manpages for more information
 
@@ -68,28 +73,17 @@ Here are the builtin functions I used and a quick description of what they do. C
 | ``gettimeofday`` | Returns ``epoch`` in a ``timeval`` struct |
 | ``open`` | Opens a file to a file descriptor |
 | ``close`` | Closes a file descriptor |
-| ``write`` | Writes bytes to a file descriptor |
+| ``write`` | Writes n bytes of memory to a file descriptor |
 | ``printf`` | Prints string to ``stdout`` |
 | ``malloc`` | Allocates bytes of memory to a given pointer |
 | ``free`` | Frees allocated memory from a pointer |
-| ``chdir`` | Changes the system's current working directory (same as ``cd`` in a shell)|
-
-Additionally, this project uses a personal library I use called ``libft``. This project only includes the compiled ``libft.a`` file, but the source code for these functions can be found [here](https://github.com/madebypixel02/libft). Here's a quick overview of the functions I used from this personal library:
-
-| Function | Description |
-| :------: | :---------: |
-| ``ft_putstr_fd`` | Writes a custom string to a file descriptor with ``write`` |
-| ``ft_atoi`` | Converts ascii to int. Reads a string and obtains the equivalent integer value |
-| ``ft_strdup`` | Returns allocated copy of a string |
-| ``ft_strjoin`` | Joins two strings together in an allocated string |
-| ``ft_substr`` | Returns allocated substring (copies n bytes from ``start`` of the given string) |
-
+| ``chdir`` | Changes the system's current working directory (same as ``cd`` in a shell) |
 
 * General Code description
 
 The code of this practice is hopefully easy to read, but it is actually pretty straightforward. Here is a rough list of the instructions it goes over:
 
-1. Read arguments from ``argv`` (argument list) to save ``n_usrs``, ``n_attrs`` and ``n_rep``.
+1. Reads arguments from ``argv`` (argument list) to save ``n_usrs``, ``n_attrs`` and ``n_rep``.
 2. Deletes ``tests/`` folder (if present), creates ``tests/master/`` folder, runs ``cpabe-setup`` in it.
 3. In the ``tests/`` folder, creates folder for every user (``user_1``, ``...``, ``user_n``), copies ``pub_key`` and creates ``priv`` key with their attributes (``attr_1``, ``...``, ``attr_n``) using ``cpabe-keygen``.
 4. Opens log file ``log.txt`` in the ``tests/`` folder where basic logging information will be saved.
@@ -138,7 +132,7 @@ As we can see, the key size increases very fast as the number of attributes goes
 
 Note: I added a few extra rows of data to the graph for better visualization.
 
-From the graph we can see a clear pattern. As expected, the more users and attributes, the longer it will take to encrypt and decrypt the file 20 times. However, we can see that changing them number of attributes doesn't affect the performance of the encryption nearly as much as increasing the number of users does. This is easily seen with the case of 5 users and 50 attributes, which roughly takes 30 seconds to finish. However, the inverse case of 50 users and 5 attributes per user takes more than double the time, taking almost 90 seconds to complete.
+From the graph we can see a clear pattern. As expected, the more users and attributes, the longer it will take to encrypt and decrypt the file 20 times. However, we can see that changing the number of attributes doesn't affect the performance of the encryption nearly as much as increasing the number of users does. This is easily seen with the case of 5 users and 50 attributes, which roughly takes 30 seconds to finish. However, the inverse case of 50 users and 5 attributes per user takes more than double the time, taking almost 90 seconds to complete.
 
 Thus, we can confidently say that it will be computationally less feasible to have 1k users than having 1k attributes per user.
 
@@ -184,6 +178,14 @@ sudo make LDFLAGS="-lgmp -lpbc -lcrypto -L/usr/lib/x86_64-linux-gnu -lglib-2.0 -
 cd ..
 ```
 
+To make things work, you might need to specify the proper path for the ``LD_LIBRARY_PATH`` environment variable:
+
+```shell
+export LD_LIBRARY_PATH=/usr/local/lib
+echo "export LD_LIBRARY_PATH=/usr/local/lib" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/lib" >> ~/.zshrc
+```
+
 
 * Usage
 
@@ -202,10 +204,22 @@ The Makefile compliles the executable ``cp_abe`` to a folder called ``bin/``. To
 ```
 ./bin/cp_abe 5 5 20
 ```
-Note: if you get an error saying permission denied, try ``chmod +x ./bin/cp_abe`` before executing the file
+Note: if you get an error saying permission denied, enter ``chmod +x ./bin/cp_abe`` and try again
 
 ### Example
 
+<p align="center">
+  <img src=https://user-images.githubusercontent.com/40824677/165058756-44d62288-7dad-45c6-99d9-6de438903a5f.gif />
+</p>
+
+
 ## Summary
 
+All in all, this project was fun to code and it helped me understand the basics of attribute-based encryption and how it scales with larger users and attributes per user :)
+
 April 25th, 2022
+
+<p align="center">
+  <a href="https://github.com/madebypixel02/Openssl-Practices-2022">&#11013;</a>
+  <a href="https://github.com/madebypixel02/Uc3m-Projects">&#127968;</a>
+</p>
