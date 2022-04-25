@@ -13,11 +13,12 @@
 /*   By: aperez-b <100429952@alumnos.uc3m.es>                                 */
 /*                                                                            */
 /*   Created: 2022/04/23 11:29:43 by aperez-b                                 */
-/*   Updated: 2022/04/25 11:04:52 by aperez-b                                 */
+/*   Updated: 2022/04/25 19:38:58 by aperez-b                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cp_abe.h"
+#include <unistd.h>
 
 void	parse_args(char **argv, int *n_usrs, int *n_attrs, int *n_rep)
 {
@@ -66,11 +67,15 @@ void	config_dirs(int n_usrs, int n_attrs)
 	}
 }
 
-void	crypt_pdf(int n_usrs, int n_attrs, int n_rep, int logfile)
+useconds_t	crypt_pdf(int n_usrs, int n_attrs, int n_rep, int logfile)
 {
-	int		ij[2];
+	int			ij[2];
+	useconds_t	start_time;
+	useconds_t	end_time;
 
 	ij[0] = 0;
+	start_time = get_time();
+	end_time = 0;
 	while (ij[0]++ < n_rep)
 	{
 		ft_putstr_fd("Starting encryption no. ", logfile);
@@ -86,7 +91,9 @@ void	crypt_pdf(int n_usrs, int n_attrs, int n_rep, int logfile)
 			ft_putnbr_fd(ij[1], logfile);
 			ft_putstr_fd(".\n", logfile);
 		}
+		end_time += get_time() - (start_time + end_time);
 	}
+	return (end_time);
 }
 
 int	main(int argc, char **argv)
@@ -95,7 +102,7 @@ int	main(int argc, char **argv)
 	int			n_attrs;
 	int			n_rep;
 	int			logfile;
-	useconds_t	times[2];
+	useconds_t	time;
 
 	if (argc != 4)
 	{
@@ -107,12 +114,10 @@ int	main(int argc, char **argv)
 	create_dirs();
 	config_dirs(n_usrs, n_attrs);
 	logfile = open("log.txt", O_CREAT | O_TRUNC | O_WRONLY, 0666);
-	times[0] = get_time();
-	crypt_pdf(n_usrs, n_attrs, n_rep, logfile);
-	times[1] = get_time();
+	time = crypt_pdf(n_usrs, n_attrs, n_rep, logfile);
 	printf("Job done for %d user(s) with %d attribute(s) ", n_usrs, n_attrs);
-	printf("(%d repetition(s)).\nTook: %0.3lf seconds\n", \
-		n_rep, (double)(times[1] - times[0]) / 1000);
+	printf("(%d repetition(s)).\nTook: %0.3lf seconds (avg).\n", \
+		n_rep, (double)(time) / (1000 * n_rep));
 	close(logfile);
 	return (0);
 }

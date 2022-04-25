@@ -13,7 +13,7 @@
 <!-- By: aperez-b <100429952@alumnos.uc3m.es>                                -->
 <!--                                                                         -->
 <!-- Created: 2022/04/25 07:29:22 by aperez-b                                -->
-<!-- Updated: 2022/04/25 12:16:28 by aperez-b                                -->
+<!-- Updated: 2022/04/25 20:25:14 by aperez-b                                -->
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
@@ -102,14 +102,14 @@ The code of this practice is hopefully easy to read, but it is actually pretty s
 
 ## Testing the Algorithm
 
-For this part, we will take a look at the time it takes to encrypt and decrypt a file 20 times depending on the number of users and attributes for every user. Then we'll make a graph to better visualize the results.
+For this part, we will take a look at the time it takes to encrypt and decrypt a file. We retrieve 20 measurements and compute an average (mean). Then we'll make a graph to better visualize the results.
 
-| No. of Users | No. of Attributes | Avg. Execution time (seconds) |
-| :----------: | :---------------: | :---------------------------: |
-| 5 | 5 | 11 |
-| 5 | 20 | 17 |
-| 20 | 5 | 35 |
-| 20 | 20 | 54 |
+| No. of Users | No. of Attributes | Avg. Execution Time (s) | Total Execution Time (s) |
+| :----------: | :---------------: | :---------------------: | :----------------------: |
+| 5 | 5 | 0.518 | 11 |
+| 5 | 20 | 0.849 | 17 |
+| 20 | 5 | 1.664 | 35 |
+| 20 | 20 | 2.603 | 54 |
 
 Note: these values are highly dependant on the processing power of the device running the program. It is only interesting to see the variations in time relative to each other, rather than the actual numbers.
 
@@ -134,12 +134,12 @@ As we can see, the key size increases very fast as the number of attributes goes
 ### Graph
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/165048577-86ebe4fb-9130-4db7-85da-90dfcc15190e.png />
+  <img src=https://user-images.githubusercontent.com/40824677/165148450-84626023-6012-4ec9-9b38-32140598ae0d.png />
 </p>
 
 Note: I added a few extra rows of data to the graph for better visualization.
 
-From the graph we can see a clear pattern. As expected, the more users and attributes, the longer it will take to encrypt and decrypt the file 20 times. However, we can see that changing the number of attributes doesn't affect the performance of the encryption nearly as much as increasing the number of users does. This is easily seen with the case of 5 users and 50 attributes, which roughly takes 30 seconds to finish. However, the inverse case of 50 users and 5 attributes per user takes more than double the time, taking almost 90 seconds to complete.
+From the graph we can see a clear pattern. As expected, the more users and attributes, the longer it will take to encrypt and decrypt the file. However, we can see that changing the number of attributes doesn't affect the performance of the encryption nearly as much as increasing the number of users does. This is easily seen with the case of 5 users and 50 attributes, which roughly takes 30 (1.469s on average) seconds to finish. However, the inverse case of 50 users and 5 attributes per user takes more than double the time, taking almost 90 seconds (3.94s on average) to complete.
 
 Thus, we can confidently say that it will be computationally less feasible to have 1k users than having 1k attributes per user.
 
@@ -217,11 +217,11 @@ Note: if you get an error saying permission denied, enter ``chmod +x ./bin/cp_ab
 ### Example
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/165074643-9682726f-e15d-49ed-b40b-b7cea70f322a.png />
+  <img src=https://user-images.githubusercontent.com/40824677/165149048-a2af70c0-5b18-45d0-92d7-2e1039fa5012.png />
 </p>
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/165074647-23f67724-10f5-4a58-9218-2b754e465630.png />
+  <img src=https://user-images.githubusercontent.com/40824677/165149061-8266a32b-3a61-41db-8968-ac92cf6c0a8b.png />
 </p>
 
 ## Summary
