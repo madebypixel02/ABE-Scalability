@@ -13,7 +13,7 @@
 /*   By: aperez-b <100429952@alumnos.uc3m.es>                                 */
 /*                                                                            */
 /*   Created: 2022/04/23 11:29:43 by aperez-b                                 */
-/*   Updated: 2022/04/24 13:11:13 by aperez-b                                 */
+/*   Updated: 2022/04/25 11:04:52 by aperez-b                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	parse_args(char **argv, int *n_usrs, int *n_attrs, int *n_rep)
 	*n_usrs = ft_atoi(argv[1]);
 	*n_attrs = ft_atoi(argv[2]);
 	*n_rep = ft_atoi(argv[3]);
-	if (*n_usrs <= 0 || *n_usrs > 20)
+	if (*n_usrs <= 0 || *n_usrs > 50)
 		*n_usrs = 5;
-	if (*n_attrs <= 0 || *n_attrs > 20)
+	if (*n_attrs <= 0 || *n_attrs > 50)
 		*n_attrs = 5;
-	if (*n_rep <= 0 || *n_rep > 20)
+	if (*n_rep <= 0 || *n_rep > 50)
 		*n_rep = 20;
 }
 
@@ -98,7 +98,11 @@ int	main(int argc, char **argv)
 	useconds_t	times[2];
 
 	if (argc != 4)
-		return (ft_putstr_fd("cp_abe: Incorrect no. of arguments\n", 2) != 0);
+	{
+		ft_putstr_fd("usage: ", 2);
+		ft_putstr_fd("cp_abe <n_users> <n_attributes> <n_repetitions>\n", 2);
+		return (1);
+	}
 	parse_args(argv, &n_usrs, &n_attrs, &n_rep);
 	create_dirs();
 	config_dirs(n_usrs, n_attrs);
@@ -107,7 +111,7 @@ int	main(int argc, char **argv)
 	crypt_pdf(n_usrs, n_attrs, n_rep, logfile);
 	times[1] = get_time();
 	printf("Job done for %d user(s) with %d attribute(s) ", n_usrs, n_attrs);
-	printf("(%d repetition(s)).\nTook: %lf seconds\n", \
+	printf("(%d repetition(s)).\nTook: %0.3lf seconds\n", \
 		n_rep, (double)(times[1] - times[0]) / 1000);
 	close(logfile);
 	return (0);
