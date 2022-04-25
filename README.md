@@ -150,8 +150,7 @@ Thus, we can confidently say that it will be computationally less feasible to ha
 In order to run this practice, you must install some packages on your system. To build the packages, you must first install these dependencies:
 
 ```shell
-sudo apt -y install make gcc g++ autoconf libc6 libpcre3 
-flex bison libgmp-dev libssl-dev libglib2.0-dev help2man
+sudo apt -y install make gcc g++ autoconf libc6 libpcre3 flex bison libgmp-dev libssl-dev libglib2.0-dev help2man
 ```
 
 Once those dependencies are satisfied, follow these steps to build the required packages on your system (needs root/sudo)
