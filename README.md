@@ -13,7 +13,7 @@
 <!-- By: aperez-b <100429952@alumnos.uc3m.es>                                -->
 <!--                                                                         -->
 <!-- Created: 2022/04/25 07:29:22 by aperez-b                                -->
-<!-- Updated: 2022/04/25 12:15:21 by aperez-b                                -->
+<!-- Updated: 2022/04/25 12:16:28 by aperez-b                                -->
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
@@ -68,7 +68,7 @@ Here is a quick overview of the functions I created:
 | ``ft_strlen`` | Returns length of a string |
 | ``ft_nbrlen`` | Returns length of a number |
 | ``ft_strlcat`` | Copies ``n - 1`` bytes of a string into another one |
-| ``ft_issplace`` | Returns ``1`` if char is a form of space (same as ``isspace``) |
+| ``ft_isspace`` | Returns ``1`` if char is a form of space (same as ``isspace``) |
 | ``ft_putchar_fd`` | Writes a char to a file descriptor |
 | ``ft_putnbr_fd`` | Writes int to a file descriptor |
 
