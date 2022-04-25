@@ -217,9 +217,12 @@ Note: if you get an error saying permission denied, enter ``chmod +x ./bin/cp_ab
 ### Example
 
 <p align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/165058756-44d62288-7dad-45c6-99d9-6de438903a5f.gif />
+  <img src=https://user-images.githubusercontent.com/40824677/165074643-9682726f-e15d-49ed-b40b-b7cea70f322a.png />
 </p>
 
+<p align="center">
+  <img src=https://user-images.githubusercontent.com/40824677/165074647-23f67724-10f5-4a58-9218-2b754e465630.png />
+</p>
 
 ## Summary
 
