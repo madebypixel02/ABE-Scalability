@@ -17,7 +17,7 @@
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
-# ABE-Scalability | uc3m
+# ABE Scalability | uc3m
 
 *Cybersecurity practice to measure the scalability and complexity of Attribute-Based Encryption 🔧*
 
