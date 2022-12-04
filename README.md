@@ -13,7 +13,7 @@
 <!-- By: aperez-b <100429952@alumnos.uc3m.es>                                -->
 <!--                                                                         -->
 <!-- Created: 2022/04/25 07:29:22 by aperez-b                                -->
-<!-- Updated: 2022/04/25 20:25:14 by aperez-b                                -->
+<!-- Updated: 2022/12/04 16:48:11 by aperez-b                                -->
 <!--                                                                         -->
 <!-- *********************************************************************** -->
 
@@ -133,9 +133,9 @@ As we can see, the key size increases very fast as the number of attributes goes
 
 ### Graph
 
-<p align="center">
+<div align="center">
   <img src=https://user-images.githubusercontent.com/40824677/165148450-84626023-6012-4ec9-9b38-32140598ae0d.png />
-</p>
+</div>
 
 Note: I added a few extra rows of data to the graph for better visualization.
 
@@ -216,21 +216,16 @@ Note: if you get an error saying permission denied, enter ``chmod +x ./bin/cp_ab
 
 ### Example
 
-<p align="center">
+<div align="center">
   <img src=https://user-images.githubusercontent.com/40824677/165149048-a2af70c0-5b18-45d0-92d7-2e1039fa5012.png />
-</p>
+</div>
 
-<p align="center">
+<div align="center">
   <img src=https://user-images.githubusercontent.com/40824677/165149061-8266a32b-3a61-41db-8968-ac92cf6c0a8b.png />
-</p>
+</div>
 
 ## Summary
 
 All in all, this project was fun to code and it helped me understand the basics of attribute-based encryption and how it scales with larger users and attributes per user :)
 
 April 25th, 2022
-
-<p align="center">
-  <a href="https://github.com/madebypixel02/Openssl-Practices-2022">&#11013;</a>
-  <a href="https://github.com/madebypixel02/Uc3m-Projects">&#127968;</a>
-</p>
